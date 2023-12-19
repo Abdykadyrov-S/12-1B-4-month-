@@ -19,7 +19,7 @@
     <meta name="description" content="Personal Portfolio Template">
     <meta name="author" content="TeamXcel">
 
-    <title>Xavia | Portfolio HTML Template</title>
+    <title>{{ title }}</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
 
@@ -57,7 +57,7 @@
     <header id="header" class="header-section">
         <div class="container">
             <nav class="navbar">
-                <a href="#" class="navbar-brand"><img src="{% static 'img/logo.png'%}" alt="Xavia"></a>
+                <a href="#" class="navbar-brand"><img src="{{ settings.logo.url }}"style="width: 70px;" alt="Xavia"></a>
                 <div class="d-flex menu-wrap">
                     <div id="navmenu" class="mainmenu">
                         <ul class="nav">
@@ -80,9 +80,9 @@
             <div class="row hero-wrap">
                 <div class="col-lg-7">
                     <div class="hero-content">
-                        <h3 class="sub-heading wow fadeInUp" data-wow-delay="200ms">Hey, I AM Robert Flores...</h3>
-                        <h1 class="heading wow fadeInUp" data-wow-delay="300ms">Best Designer for You</h1>
-                        <p class="desc wow fadeInUp" data-wow-delay="400ms">I specialize in designing and developing services for customers of all sizes, focusing on creating stylish and modern websites, web services, and online stores.</p>
+                        <!-- <h3 class="sub-heading wow fadeInUp" data-wow-delay="200ms">здесь будет что-то....</h3> -->
+                        <h1 class="heading wow fadeInUp" style="color: rgba(255, 255, 58, 0.801);" data-wow-delay="300ms">{{settings.title}}</h1>
+                        <p class="desc wow fadeInUp" style="width: 500px; font-size: 30px;" data-wow-delay="400ms">{{settings.description}}</p>
                         <a href="#" class="default-btn wow fadeInUp" data-wow-delay="500ms">Download CV</a>
                     </div>
                 </div>
@@ -96,48 +96,14 @@
             <div class="row about-wrap d-flex align-items-center">
                 <div class="col-lg-5 sm-padding">
                     <div class="about-bg wow fadeInLeft" data-wow-delay="100ms">
-                        <img src="{% static 'img/about.jpg' %}" alt="img">
+                        <img src="{{about.image.url}}" alt="img">
                     </div>
                 </div>
                 <div class="col-lg-7 sm-padding">
                     <div class="about-content">
-                        <h2><span class="wow fadeInUp" data-wow-delay="100ms">I'm creative UI/UX designer</span> <br><span class="wow fadeInUp" data-wow-delay="300ms">developer based in new york.</span></h2>
-                        <p class="wow fadeInUp" data-wow-delay="500ms">Hello! I'm Robert Flores, a dedicated and passionate graphic designer with 20 years of experience. I possess the skills and knowledge to ensure the success of your project.</p>
+                        <h2><span class="wow fadeInUp" data-wow-delay="100ms">{{about.title}}</span> </h2>
+                        <p class="wow fadeInUp" data-wow-delay="500ms">{{about.description}}</p>
                     </div>
-                    <ul class="skill-items wow fadeInUp" data-wow-delay="700ms">
-                        <li class="skill-item">
-                            <h5>Photoshop</h5>
-                            <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-delay="0ms" data-wow-duration="2000ms" role="progressbar" style="width: 80%;">
-                                    <span>80%</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="skill-item">
-                            <h5>Indesign</h5>
-                            <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-delay="200ms" data-wow-duration="2000ms" role="progressbar" style="width: 90%;" role="progressbar">
-                                    <span>90%</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="skill-item">
-                            <h5>Web Programing</h5>
-                            <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-delay="300ms" data-wow-duration="2000ms" role="progressbar" style="width: 75%;" role="progressbar">
-                                    <span>75%</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="skill-item">
-                            <h5>Adobe Illustrator</h5>
-                            <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-delay="400ms" data-wow-duration="2000ms" role="progressbar" style="width: 65%;" role="progressbar">
-                                    <span>65%</span>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
                     <div class="cv-btn">
                         <a href="#" class="default-btn wow fadeInUp" data-wow-delay="900ms">Get a Free Quote</a>
                     </div>
@@ -150,38 +116,18 @@
     <section id="services" class="service-section bg-grey bd-bottom padding">
         <div class="container">
             <div class="section-heading text-center mb-40">
-                <h2 class="wow fadeInUp">Awesome Services</h2>
+                <h2 class="wow fadeInUp">ВОСТРЕБОВАННЫЕ IT-КУРСЫ В КЫРГЫЗСТАНЕ</h2>
             </div>
             <!--/.section-heading-->
             <div class="service-wrap row">
-                <div class="col-lg-3 col-sm-6 sm-padding wow fadeInUp" data-wow-delay="100ms">
-                    <div class="service-item text-center">
-                        <i class="icon-camera"></i>
-                        <h3><span>Photography</span></h3>
-                        <p>Tell your product's story to engage users and boost conversions.</p>
-                    </div>
-                </div>
+                {% for course in courses %}
                 <div class="col-lg-3 col-sm-6 sm-padding wow fadeInUp" data-wow-delay="300ms">
                     <div class="service-item text-center">
-                        <i class="icon-tools"></i>
-                        <h3><span>Web Design</span></h3>
-                        <p>Tell your product's story to engage users and boost conversions.</p>
+                        <h3><span>{{course.title}}</span></h3>
+                        <p>{{course.description}}</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6 sm-padding wow fadeInUp" data-wow-delay="500ms">
-                    <div class="service-item text-center">
-                        <i class="icon-laptop"></i>
-                        <h3><span>UI/UX Design</span></h3>
-                        <p>Tell your product's story to engage users and boost conversions.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 sm-padding wow fadeInUp" data-wow-delay="700ms">
-                    <div class="service-item text-center">
-                        <i class="icon-mobile"></i>
-                        <h3><span>Mobile Apps</span></h3>
-                        <p>Tell your product's story to engage users and boost conversions.</p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
